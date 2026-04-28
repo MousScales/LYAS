@@ -70,16 +70,6 @@
             and trusted caregivers who show up with professionalism and compassion.
           </p>
         </div>
-        <aside class="count-card reveal" data-delay="2">
-          <h3>You Can Count on Us For</h3>
-          <ul>
-            <li>Personal care at home</li>
-            <li>Companion and safety support</li>
-            <li>Respite and overnight options</li>
-            <li>Wellness check support</li>
-            <li>Family communication and updates</li>
-          </ul>
-        </aside>
       </div>
     </section>
 
@@ -297,6 +287,7 @@
     <p>&copy; 2026 Love You Like A Sister LLC. All rights reserved.</p>
   </footer>
   <script>
+    document.documentElement.classList.add("js");
     const header = document.querySelector(".site-header");
     const progress = document.querySelector(".scroll-progress");
     const revealItems = document.querySelectorAll(".reveal");
@@ -333,10 +324,22 @@
     const onScroll = () => {
       applyHeaderState();
       applyScrollProgress();
+      revealNearViewport();
       if (!ticking) {
         window.requestAnimationFrame(applyParallax);
         ticking = true;
       }
+    };
+
+    const revealNearViewport = () => {
+      const revealLimit = window.innerHeight * 1.15;
+      revealItems.forEach((item) => {
+        if (item.classList.contains("in-view")) return;
+        const rect = item.getBoundingClientRect();
+        if (rect.top < revealLimit) {
+          item.classList.add("in-view");
+        }
+      });
     };
 
     const observer = new IntersectionObserver(
@@ -348,7 +351,7 @@
           }
         });
       },
-      { threshold: 0.16 }
+      { threshold: 0.01, rootMargin: "0px 0px -6% 0px" }
     );
 
     revealItems.forEach((item) => observer.observe(item));
@@ -432,6 +435,7 @@
     applyHeaderState();
     applyScrollProgress();
     applyParallax();
+    revealNearViewport();
     window.addEventListener("scroll", onScroll, { passive: true });
   </script>
 </body>
