@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Love You Like A Sister</title>
+  <meta name="description" content="Photo gallery of care services and community support.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-heart">♡</span>
+        Love You Like A Sister
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="care-process.html">How It Works</a>
+        <a class="active" href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section-page">
+      <div class="section-title">
+        <p class="eyebrow">Gallery</p>
+        <h1>Care in Action</h1>
+      </div>
+      <div class="gallery-showcase">
+        <figure class="gallery-main">
+          <img id="gallery-main-image" src="image0.png" alt="Care team members outdoors">
+          <figcaption id="gallery-main-caption">Care Team</figcaption>
+        </figure>
+        <div class="gallery-thumbs" role="list" aria-label="Photo thumbnails">
+          <button class="gallery-thumb is-active" type="button" role="listitem" data-src="image0.png" data-alt="Care team members outdoors" data-caption="Care Team"><img src="image0.png" alt="Care Team"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image1.jpeg" data-alt="Group of caregivers in a common area" data-caption="Resident Engagement"><img src="image1.jpeg" alt="Resident Engagement"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image2.jpeg" data-alt="Two caregivers taking a team selfie" data-caption="Staff Unity"><img src="image2.jpeg" alt="Staff Unity"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image3.jpeg" data-alt="Caregiver in the facility lobby" data-caption="Welcoming Environment"><img src="image3.jpeg" alt="Welcoming Environment"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image4.jpeg" data-alt="Caregiver with community member outdoors" data-caption="Community Connection"><img src="image4.jpeg" alt="Community Connection"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image6.jpeg" data-alt="Caregivers and community members standing together" data-caption="Outreach Team"><img src="image6.jpeg" alt="Outreach Team"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image7.jpeg" data-alt="Blood pressure check with community resident" data-caption="Health Screening"><img src="image7.jpeg" alt="Health Screening"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image8.jpeg" data-alt="Caregiver assisting resident with wellness check" data-caption="Wellness Monitoring"><img src="image8.jpeg" alt="Wellness Monitoring"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image10.jpeg" data-alt="Caregiver sitting with senior resident" data-caption="Companion Care"><img src="image10.jpeg" alt="Companion Care"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image11.jpeg" data-alt="Care team conducting community registration activity" data-caption="Program Coordination"><img src="image11.jpeg" alt="Program Coordination"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image12.jpeg" data-alt="Outdoor screening table and care supplies" data-caption="Preventive Care"><img src="image12.jpeg" alt="Preventive Care"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image13.jpeg" data-alt="Blood pressure support in outdoor clinic setting" data-caption="Hands-On Nursing"><img src="image13.jpeg" alt="Hands-On Nursing"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image14.jpeg" data-alt="Team member wearing Love You Like A Sister uniform" data-caption="Trusted Team"><img src="image14.jpeg" alt="Trusted Team"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image15.jpeg" data-alt="Caregivers standing with senior community member" data-caption="Dignity and Respect"><img src="image15.jpeg" alt="Dignity and Respect"></button>
+          <button class="gallery-thumb" type="button" role="listitem" data-src="image16.jpeg" data-alt="Caregivers and senior resident in group photo" data-caption="Care Partnership"><img src="image16.jpeg" alt="Care Partnership"></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const mainImage = document.getElementById("gallery-main-image");
+    const mainCaption = document.getElementById("gallery-main-caption");
+    const thumbButtons = document.querySelectorAll(".gallery-thumb");
+
+    thumbButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const { src, alt, caption } = button.dataset;
+        if (!src) return;
+
+        mainImage.src = src;
+        mainImage.alt = alt || "";
+        mainCaption.textContent = caption || "";
+
+        thumbButtons.forEach((thumb) => thumb.classList.remove("is-active"));
+        button.classList.add("is-active");
+      });
+    });
+  </script>
+</body>
+</html>
