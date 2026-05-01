@@ -573,7 +573,8 @@ main {
 
 .media-grid figure {
   position: relative;
-  background: #0f1729;
+  background: linear-gradient(145deg, #f6f8ff, #e5ebf7);
+  min-height: 220px;
 }
 
 .media-grid figure::before {

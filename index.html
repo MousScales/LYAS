@@ -313,6 +313,8 @@
         <figure><img src="IMG_7156.jpeg" alt="Recently added client photo IMG 7156"></figure>
         <figure><img src="IMG_7146.jpeg" alt="Recently added client photo IMG 7146"></figure>
         <figure><img src="IMG_7096.jpeg" alt="Recently added client photo IMG 7096"></figure>
+        <figure><img src="IMG_7572.JPEG" alt="Recently added team portrait IMG 7572"></figure>
+        <figure><img src="IMG_7573.JPEG" alt="Recently added team portrait IMG 7573"></figure>
       </div>
     </section>
 
@@ -321,7 +323,7 @@
       <h2>Moments in Motion</h2>
       <div class="video-grid">
         <figure>
-          <video controls preload="metadata" poster="image18.jpeg">
+          <video controls preload="auto" poster="image18.jpeg">
             <source src="IMG_5471.mp4" type="video/mp4">
             <source src="IMG_5471.MOV" type="video/quicktime">
             Your browser does not support the video tag.
@@ -329,7 +331,7 @@
           <figcaption>Care Team Highlight</figcaption>
         </figure>
         <figure>
-          <video controls preload="metadata" poster="image22.jpeg">
+          <video controls preload="auto" poster="image22.jpeg">
             <source src="IMG_5989.mp4" type="video/mp4">
             <source src="IMG_5989.MOV" type="video/quicktime">
             Your browser does not support the video tag.
@@ -337,7 +339,7 @@
           <figcaption>Community Support Moment</figcaption>
         </figure>
         <figure>
-          <video controls preload="metadata" poster="image24.jpeg">
+          <video controls preload="auto" poster="image24.jpeg">
             <source src="IMG_6178.mp4" type="video/mp4">
             <source src="IMG_6178.MOV" type="video/quicktime">
             Your browser does not support the video tag.
@@ -345,7 +347,7 @@
           <figcaption>Client Care in Action</figcaption>
         </figure>
         <figure>
-          <video controls preload="metadata" poster="image15.jpeg">
+          <video controls preload="auto" poster="image15.jpeg">
             <source src="Video.mp4" type="video/mp4">
             <source src="Video.mov" type="video/quicktime">
             Your browser does not support the video tag.
@@ -353,7 +355,7 @@
           <figcaption>Care Highlight Clip</figcaption>
         </figure>
         <figure>
-          <video controls preload="metadata" poster="image16.jpeg">
+          <video controls preload="auto" poster="image16.jpeg">
             <source src="Video_1.mp4" type="video/mp4">
             <source src="Video_1.mov" type="video/quicktime">
             Your browser does not support the video tag.
@@ -537,6 +539,38 @@
       }
     });
 
+    const preloadMediaAssets = () => {
+      const preloadedVideoUrls = new Set();
+
+      document.querySelectorAll("main img").forEach((img) => {
+        img.loading = "eager";
+        img.decoding = "async";
+        const src = img.currentSrc || img.src;
+        if (!src) return;
+        const warmImage = new Image();
+        warmImage.src = src;
+      });
+
+      document.querySelectorAll("main video").forEach((video) => {
+        video.preload = "auto";
+        try {
+          video.load();
+        } catch (error) {
+          // Continue; some browsers can block eager video loads.
+        }
+
+        video.querySelectorAll("source").forEach((source) => {
+          if (!source.src || preloadedVideoUrls.has(source.src)) return;
+          preloadedVideoUrls.add(source.src);
+          const preloadLink = document.createElement("link");
+          preloadLink.rel = "preload";
+          preloadLink.as = "video";
+          preloadLink.href = source.src;
+          document.head.appendChild(preloadLink);
+        });
+      });
+    };
+
     const lightbox = document.getElementById("lightbox");
     const lightboxClose = lightbox.querySelector(".lightbox-close");
 
@@ -564,7 +598,7 @@
       const clone = document.createElement("video");
       clone.className = "lightbox-media";
       clone.controls = true;
-      clone.preload = "metadata";
+      clone.preload = "auto";
       clone.autoplay = true;
       clone.playsInline = true;
       if (sourceVideo.poster) clone.poster = sourceVideo.poster;
@@ -621,6 +655,7 @@
     applyScrollProgress();
     applyParallax();
     revealNearViewport();
+    preloadMediaAssets();
     window.addEventListener("scroll", onScroll, { passive: true });
   </script>
 </body>
