@@ -984,6 +984,90 @@ main video {
   box-shadow: 0 10px 24px rgba(8, 24, 56, 0.2);
 }
 
+.adp-respite-note,
+.respite-highlight {
+  text-align: center;
+}
+
+.respite-highlight {
+  border-radius: 16px;
+  padding: 18px 22px;
+}
+
+.respite-highlight-label {
+  margin: 0 0 6px;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.respite-highlight h3 {
+  margin: 0 0 8px;
+  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+  line-height: 1.2;
+}
+
+.respite-highlight p:last-child {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.respite-highlight--hero {
+  margin: 22px auto 0;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 196, 220, 0.55);
+  box-shadow: 0 14px 30px rgba(8, 24, 56, 0.24);
+}
+
+.respite-highlight--hero .respite-highlight-label {
+  color: #ffd4e6;
+}
+
+.respite-highlight--hero h3 {
+  color: #ffffff;
+}
+
+.respite-highlight--hero p:last-child {
+  color: #edf3ff;
+}
+
+.respite-highlight--light {
+  margin: 18px 0 16px;
+  max-width: 560px;
+  background: linear-gradient(135deg, #fff6fa 0%, #f2f7ff 100%);
+  border: 2px solid #f2bfd4;
+  box-shadow: 0 12px 24px rgba(255, 79, 139, 0.14);
+}
+
+.respite-highlight--light h3 {
+  color: var(--brand-dark);
+}
+
+.respite-highlight--light p:last-child {
+  color: var(--muted);
+}
+
+.respite-highlight--page {
+  margin-bottom: 18px;
+  background: linear-gradient(135deg, #fff0f6 0%, #edf4ff 100%);
+  border: 2px solid #efb8cf;
+  box-shadow: 0 14px 28px rgba(255, 79, 139, 0.16);
+}
+
+.respite-highlight--page h3 {
+  color: var(--brand-dark);
+}
+
+.respite-highlight--page p:last-child {
+  color: var(--muted);
+  max-width: 68ch;
+  margin: 0 auto;
+}
+
 .adp-btn-light {
   border: 2px solid rgba(255, 255, 255, 0.75) !important;
   color: #ffffff !important;
