@@ -34,7 +34,7 @@ img {
   background: var(--brand-dark);
   color: #fff;
   font-size: 0.92rem;
-  max-height: 48px;
+  max-height: 72px;
   overflow: hidden;
   transition: max-height 0.35s ease, opacity 0.35s ease;
 }
@@ -45,8 +45,35 @@ img {
   padding: 8px 22px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
+}
+
+.top-contact-brand,
+.top-contact-phone {
+  line-height: 1.25;
+}
+
+.top-contact-brand {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.top-contact-phone {
+  display: block;
+  text-align: center;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.top-contact-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.top-contact-sub {
+  font-size: 0.88em;
+  opacity: 0.95;
 }
 
 .top-contact p {
@@ -1420,6 +1447,25 @@ main video {
 }
 
 @media (max-width: 680px) {
+  .top-contact {
+    font-size: 0.78rem;
+    max-height: 88px;
+  }
+
+  .top-contact .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    column-gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .top-contact-phone {
+    justify-self: center;
+    text-align: center;
+  }
+
   .wrap,
   .nav-wrap,
   main {
